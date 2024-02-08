@@ -1,0 +1,21 @@
+class Solution {
+    static int divideLadoo(int N , int[] A) {
+        
+        // Make an array to store frequency of each requested day
+        int[] freq = new int[100005];
+		Arrays.fill(freq,0);
+		
+		for(int i=0 ; i<N ; i++)
+		    freq[A[i]]++;
+		    
+		int ans = 0;
+		    
+		for(int i=0 ; i<100005 ; i++)
+		{
+		    if(freq[i]>=1)        // Add 1 on every requested day , cause he can give a ladoo
+		        ans++;          // to one friend each day.
+		}
+		
+		return ans;
+    }
+};

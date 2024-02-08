@@ -1,0 +1,51 @@
+import java.util.* ;
+
+import jdk.internal.org.jline.terminal.Size;
+
+import java.io.*; 
+public class Solution {
+   public static int partition(ArrayList arr,int low,int high)
+   {
+       int i=low;
+       int j=high;
+       int pivot=arr.get(low);
+       while(i<j)
+       {
+           while(arr.get(i)<pivot)
+           {
+               i++;
+           }
+           while(arr.get(j)>pivot)
+           {
+               j--;
+           }
+       }
+       if(i<j)
+       {
+        int temp=arr.get(j);
+       arr.set(i,arr.get(j));
+       arr.set(j,temp);
+       }
+       int temp=arr.get(low);
+       arr.set(low,arr.get(j));
+       arr.set(j,temp);
+       return j;
+       
+   }
+   public static list<integer> qs(ArrayList arr,int low,int high)
+   {
+       if(low<=high)
+       {
+           int piv_index=partiotion(arr,low,high);
+           qs(arr,0,piv_index-1);
+            qs(arr,piv_index+1,high);
+           
+
+       }
+   }
+    public static List<Integer> quickSort(List<Integer> arr){
+        // Write your code here.
+        qs(arr,0,arr,Size()-1);
+        return arr;
+    }
+}
